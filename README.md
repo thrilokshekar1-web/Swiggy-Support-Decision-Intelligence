@@ -19,11 +19,11 @@ The scripts write their result files and CSV outputs into the `outputs/` directo
 
 ### R1.1 — Confidence interval and hypothesis test
 
-The dataset contains 800 records. The sample mean is 8.9382, with a standard deviation of 9.1723 and standard error of 0.3243. The 95% confidence interval is [8.3026, 9.5738]. The calculated z-statistic is 2.8930, so the null hypothesis is rejected at the 5% significance level. The required sample size for the specified precision is 1293, which is larger than the available 800 records.
+The sample mean is 8.9382 minutes, compared with the planning assumption of 8.0 minutes: a difference of 0.9382 minutes. The z-statistic is 2.8930, exceeding the two-tailed critical value of 1.96, so H0 is rejected at the 5% significance level. A Type I error here would mean concluding that the true average resolution time differs from 8 minutes when it actually equals 8 minutes. The difference is statistically significant and may matter operationally because it is nearly one extra minute per ticket. The 95% confidence interval is [8.3026, 9.5738].
 
 ### R1.2 — Linear regression and error decomposition
 
-The fitted linear regression has slope 0.6701 and intercept -3.6598. Its R² is 0.5196, RMSE is 6.3537, and MAE is 3.7636. The total sum of squares is 67221.4285, explained sum of squares is 34925.6088, and residual sum of squares is 32295.8197. The identity TSS = ESS + RSS holds. The model explains approximately 51.96% of the observed variation.
+The fitted linear regression has slope 0.6701 and intercept -3.6598. Its R² is 0.5196, RMSE is 6.3537, and MAE is 3.7636. The total sum of squares is 67221.4285, explained sum of squares is 34925.6088, and residual sum of squares is 32295.8197. The identity TSS = ESS + RSS holds. The model explains approximately 51.96% of the observed variation. The estimated average is 0.9382 minutes above the 8-minute planning assumption.
 
 ### R1.3 — Gradient descent
 
@@ -35,7 +35,7 @@ For the raw-scale model, the ratio of the upper-half residual standard deviation
 
 ### R1.5 — Multiple regression comparison
 
-The multiple regression model achieves R² = 0.7425 and adjusted R² = 0.7403. The log-log model has adjusted R² = 0.6561. The multiple regression therefore explains more variation after accounting for model complexity in this dataset. Its coefficients are reported in `part1_results.txt`.
+The multiple regression model achieves adjusted R² = 0.7403, compared with 0.6561 for the log-log model. The predictors with absolute coefficients above 0.05 (excluding the constant) are ln(X4), X2, X3 and X6. The additional predictors improve adjusted R² by 0.0842, so they earn their place under this comparison. Coefficients have different units and should not be interpreted as a direct importance ranking.
 
 ## Part 2 — Classification models
 
